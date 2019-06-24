@@ -1,0 +1,53 @@
+#include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void ft_putstr( char *s)
+{
+	if (s)
+	{
+		while (*s)
+		{
+			ft_putchar(*s);
+			s++;
+		}
+	}
+}
+
+int count_param(char *arg0, ... )
+{
+	int count;
+	va_list ap;
+	char *current;
+
+	count = 0;
+	current = arg0;
+		
+	va_start(ap, arg0);
+	while (current != NULL)
+	{
+		current = va_arg(ap, char *);
+		count++;
+	}
+	va_end(ap);
+	return (count);
+}
+		
+	
+	
+
+int main( int argc, char **argv)
+{
+	int a = 4;
+
+	printf ("%d\n", count_param("bonjour les amilous c est oi la compagine");
+	return(0);
+}
+
